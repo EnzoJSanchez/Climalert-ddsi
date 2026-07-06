@@ -1,3 +1,3 @@
-spring:
-  application:
-    name: climalert
+rest-climalert:
+  base-url: http://api.weatherapi.com/v1
+  city: CABA
