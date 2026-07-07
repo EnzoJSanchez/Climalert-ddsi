@@ -8,4 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class RestClimalertProperties {
 
     private String baseUrl;
+    private String path;
+    private String apiKey;
+    private String city;
 }

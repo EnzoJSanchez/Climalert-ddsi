@@ -1,3 +1,5 @@
 rest-climalert:
-  base-url: http://api.weatherapi.com/v1
+  base-url: https://api.weatherapi.com/v1
+  path: /current.json
+  api-key: ${WEATHER_API_KEY}
   city: CABA
