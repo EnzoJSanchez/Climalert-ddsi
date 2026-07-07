@@ -5,11 +5,14 @@ import ar.edu.utn.ba.ddsi.climalert.dtos.weatherDTO.WeatherConditionResponse;
 import ar.edu.utn.ba.ddsi.climalert.models.entities.WeatherCondition;
 import ar.edu.utn.ba.ddsi.climalert.repositories.WeatherRepository;
 import ar.edu.utn.ba.ddsi.climalert.services.WeatherService;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 public class WeatherServiceImpl implements WeatherService {
@@ -25,6 +28,7 @@ public class WeatherServiceImpl implements WeatherService {
 
 
     @Override
+    @Scheduled(fixedRate = 300000)
     public void getAndSaveCurrentWeatherData() {
         URI uri = UriComponentsBuilder.fromUriString(propiedades.getBaseUrl())
                         .queryParam("key", propiedades.getApiKey())
@@ -36,7 +40,8 @@ public class WeatherServiceImpl implements WeatherService {
 
         WeatherCondition weather = new WeatherCondition(null, weatherData.location().name(), weatherData.location().country(), weatherData.current().temperature(), weatherData.current().humidity());
 
-        System.out.print(weather.getTemperature());
         weatherRepository.saveWeather(weather);
     }
+
+
 }
