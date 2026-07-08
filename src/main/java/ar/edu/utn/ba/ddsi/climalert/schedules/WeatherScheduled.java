@@ -13,7 +13,7 @@ public class WeatherScheduled {
         this.weatherService = weatherService;
     }
 
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedRate = 300000)
     public void getCurrentWeatherConditions(){
         weatherService.getAndSaveCurrentWeatherData();
     }
