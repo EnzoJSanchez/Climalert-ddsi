@@ -31,7 +31,6 @@ public class WeatherServiceImpl implements WeatherService {
 
 
     @Override
-    @Scheduled(fixedRate = 300000)
     public void getAndSaveCurrentWeatherData() {
         URI uri = UriComponentsBuilder.fromUriString(propiedades.getBaseUrl())
                         .path(propiedades.getPath())
@@ -50,7 +49,6 @@ public class WeatherServiceImpl implements WeatherService {
 
 
     @Override
-    @Scheduled(fixedRate = 60000)
     public void checkCriticalConditions(){
         WeatherCondition lastWeatherCondition = getWeatherConditionOrThrow();
 
